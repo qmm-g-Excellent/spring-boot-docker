@@ -1,0 +1,19 @@
+version: '2'
+services:
+  mysql:
+    image: mysql
+    ports:
+      - 3307:3306
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: 669988
+      MYSQL_DATABASE: dockerdemo
+      MYSQL_HOST: localhost
+
+  demo:
+      image: demo
+      ports:
+        - 8002:8002
+      links:
+        - mysql
+
